@@ -1,0 +1,6 @@
+-keep class com.google.mlkit.** { *; }
+-keep class com.google.android.gms.** { *; }
+-keepclassmembers class * extends androidx.room.RoomDatabase { *; }
+-keep @androidx.room.Entity class *
+-keep @androidx.room.Dao class *
+-dontwarn com.google.errorprone.annotations.**
