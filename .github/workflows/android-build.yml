@@ -36,7 +36,15 @@ jobs:
       - name: Build debug APK
         run: ./gradlew assembleDebug --no-daemon
 
-      - name: Build release APK (unsigned)
+      - name: Decode keystore
+        run: echo "${{ secrets.KEYSTORE_BASE64 }}" | base64 -d > ${{ github.workspace }}/release.jks
+
+      - name: Build release APK (signed)
+        env:
+          KEYSTORE_PATH: ${{ github.workspace }}/release.jks
+          KEY_STORE_PASSWORD: ${{ secrets.KEY_STORE_PASSWORD }}
+          KEY_ALIAS: ${{ secrets.KEY_ALIAS }}
+          KEY_PASSWORD: ${{ secrets.KEY_PASSWORD }}
         run: ./gradlew assembleRelease --no-daemon
 
       - name: Upload debug APK
@@ -45,8 +53,8 @@ jobs:
           name: app-debug-apk
           path: app/build/outputs/apk/debug/*.apk
 
-      - name: Upload release APK (unsigned)
+      - name: Upload release APK (signed)
         uses: actions/upload-artifact@v4
         with:
-          name: app-release-unsigned-apk
+          name: app-release-signed-apk
           path: app/build/outputs/apk/release/*.apk
