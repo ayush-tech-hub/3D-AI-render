@@ -2,7 +2,7 @@
 <resources>
     <string name="app_name">QR &amp; Barcode Scanner</string>
     <string name="privacy_title">100% Offline &amp; Private</string>
-    <string name="privacy_message">This app works entirely offline. Your scans never leave your device. No internet connection is required, and no data is ever collected or shared.</string>
+    <string name="privacy_message">This app works entirely offline. Your scans never leave your device. No internet connection is required, and no data is ever collected or shared.\n\nFor support, contact us at ayushallop@gmail.com</string>
     <string name="privacy_button">Got it</string>
     <string name="scanner_title">QR &amp; Barcode Scanner</string>
     <string name="history_title">Scan History</string>
